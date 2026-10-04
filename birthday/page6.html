@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lingesh ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 60px 20px;
+    background: #dce7df;
+    font-family: Times New Roman, sans-serif;
+}
+
+/* THE BIG LETTER */
+.letter-page {
+    position: relative;
+    width: 900px;
+    max-width: 100%;
+    min-height: 2500px;
+    margin: auto;
+    padding: 80px 90px 100px;
+
+    background: #eee7d5;
+
+    box-shadow: 0 12px 35px rgba(100, 110, 100, 0.18);
+    border-radius: 5px;
+}
+
+/* subtle inner border */
+.letter-page::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+
+    border: 1px solid #d0c8b4;
+
+    pointer-events: none;
+}
+
+/* SMALL HEADING */
+.small-heading {
+    text-align: center;
+
+    font-family: Times New Roman, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: #78929a;
+
+    margin-bottom: 18px;
+}
+
+/* MAIN HEADING */
+h1 {
+    margin: 0;
+
+    text-align: center;
+
+    font-family: Times New Roman, sans-serif;
+    font-size: 46px;
+    font-weight: bold;
+
+    color: #806579;
+
+    letter-spacing: 1px;
+}
+
+/* DIVIDER */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 28px 0 48px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    width: 100px;
+    height: 1px;
+
+    background: #aab9b2;
+}
+
+.divider span {
+    color: #8ca2a4;
+    font-size: 17px;
+}
+
+/* THE ACTUAL LETTER */
+.letter {
+    margin: 0;
+
+    font-family: Times New Roman, sans-serif;
+    font-size: 17px;
+    line-height: 2;
+
+    color: #665b55;
+
+    white-space: pre-line;
+}
+
+/* ENDING */
+.ending {
+    margin-top: 55px;
+
+    text-align: center;
+
+    font-family: Times New Roman, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    color: #78929a;
+
+    letter-spacing: 1px;
+}
+
+/* DOODLES */
+
+.doodle {
+    position: absolute;
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+}
+
+/* top */
+.leaf1 {
+    top: 55px;
+    left: 45px;
+    font-size: 28px;
+    color: #91a89b;
+    transform: rotate(-20deg);
+}
+
+.leaf2 {
+    top: 90px;
+    right: 45px;
+    font-size: 26px;
+    color: #8ea5ad;
+    transform: rotate(20deg);
+}
+
+/* upper sides */
+.star1 {
+    top: 300px;
+    left: 43px;
+    color: #8ea5ad;
+    font-size: 16px;
+}
+
+.star2 {
+    top: 500px;
+    right: 42px;
+    color: #91a89b;
+    font-size: 15px;
+}
+
+.heart1 {
+    top: 730px;
+    left: 43px;
+    color: #8ea5ad;
+    font-size: 20px;
+}
+
+.heart2 {
+    top: 1000px;
+    right: 43px;
+    color: #91a89b;
+    font-size: 19px;
+}
+
+/* middle */
+.star3 {
+    top: 1280px;
+    left: 42px;
+    color: #91a89b;
+    font-size: 15px;
+}
+
+.leaf3 {
+    top: 1530px;
+    right: 42px;
+    color: #8ea5ad;
+    font-size: 25px;
+    transform: rotate(15deg);
+}
+
+.heart3 {
+    top: 1810px;
+    left: 42px;
+    color: #8ea5ad;
+    font-size: 18px;
+}
+
+.star4 {
+    top: 2080px;
+    right: 43px;
+    color: #91a89b;
+    font-size: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .letter-page {
+        min-height: auto;
+        padding: 60px 35px 75px;
+    }
+
+    .letter-page::before {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .small-heading {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .divider {
+        margin: 22px 0 35px;
+    }
+
+    .divider::before,
+    .divider::after {
+        width: 45px;
+    }
+
+    .letter {
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .leaf1 {
+        left: 25px;
+    }
+
+    .leaf2 {
+        right: 25px;
+    }
+
+    .star1,
+    .heart1,
+    .star3,
+    .heart3 {
+        left: 22px;
+    }
+
+    .star2,
+    .heart2,
+    .leaf3,
+    .star4 {
+        right: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="letter-page">
+
+    <div class="doodle leaf1">⌁</div>
+    <div class="doodle leaf2">⌁</div>
+    <div class="doodle star1">✦</div>
+    <div class="doodle star2">✧</div>
+    <div class="doodle heart1">♡</div>
+    <div class="doodle heart2">♡</div>
+    <div class="doodle star3">✦</div>
+    <div class="doodle leaf3">⌁</div>
+    <div class="doodle heart3">♡</div>
+    <div class="doodle star4">✧</div>
+
+    <div class="small-heading">
+        a little something from me
+    </div>
+
+    <h1>For You ♡</h1>
+
+    <div class="divider">
+        <span>✦</span>
+    </div>
+
+    <p class="letter">
+ Dear Lingesh,
+Enaku unkitta neraiya solanum enga irunthu aarambikirathunu kooda therila enaku , anyways first of all i'm really really glad that you came into my life.Nee apdi en vaaazhkaikulla          vandhadhu thappu nu nenachi feel panra nu enaku theriyum aana athu unmai illa enna porutha veraikum. See naanu 10th la oru full period depression la irunthutu 11th la than fresh ah i   started my life again appo nee vandhu enkitta pesuna from the first day onwards i liked you, enaku unkooda appolam chat panrathu romba pudikum unkooda pesite irukanum nu thonum.initail ah  ellarume vandhu enkooda pesunanga naanum pesunen but aprm vittuten enaku you were special athunaala than neeya text pannatha naal la lam naana vandhu i texted you .unkitta irunthu than  enaku care,return ethirpaakatha love ellame kedachithu nee solrala nee ulla vandhu than en life ah ye naasamaakuna nu athulam sutha poi, see nee enkitta pesi enna love panna aprm tha  honest ah i started to love myself too , nee enna oru aala paathu love panna aprm than enaku naanu worth ne purinjithu that im worthy of love too, and ennala ivlo nallavala iruka mudiyum ennala ivlo care kata mudiyum naanu en v2la enna frame panra alavuku naanu avlo kettava illanu lam enaku unkooda pesuna aprm than theriyum. 
+
+Ithalam kooda vidu enaku chinna vayasula irunthu iruntha aasaya ellame nee oruthan than niraivethuna,like enaku appo appo theatre ponum nu aasa chinna vayasula lam romba aasa aana en appa kootitu pomaataru ( and i cant blame him ) athuku aprm birthday celebrate pannanum nu aasa aprm oru naal aachu bill lam paakama full ah nalla selavu pannanum nu aasa ( en appa vum seri en amma vum seri munnadi lam naanu avanga nenaikiratha vida athigama selavu panna en amma  atha solli solli kaamipanga and appa 10 vaati kepparu vaangurathuku munnadi ivlo costly venuma vaangiye aaganuma nu lam kepparu athu enaku aprm oru kattam mela vaangave thonathu) and i wanted to be treated specially on my birthday aaana avanga athellam ethuvume panna maatanga so ithellam enaku enikume nadakathunu naane seri ithellam nambaluku venam pudikathu nu full ah manasa maathi pala varshama vechirunthen and apdi tha unkittayume sonnen cuz athu nadakathunu lam.
+
+Aana nee vandhu enna konjum konjuma maaathuna ithellam naanu unkitta oru vaati kooda sonnathu ila but still enaku ithellame nee panna enna veliya kootitu pona enaku oor sutha romba pudikum and nee athayum niraivethuna enna veliya kootitu poi enaku vera oru ulagatha kaati living is worth nu feel panna vecha , enaku ippo veraikume therila nee illama naanu enna pannirupen nu i can never imagine it 🥹 nee varathuku munnadilam enna en v2la yearly twice or thrice than vella kootitu povanga athuvume kathi ala vechiduvanga confirm ah oru maari toxic aana household aana unkooda apdilam illa nee apdiye opposite ah iruntha enna nalla paaathukita enna kootitu poi azhaga iruka vecha evlo kaasu aanalum enaku selavu pannalume antha oru verupa enmela kaatala athunaala than en parents kooda veliya poratha vida unkooda romba pudichirunthuchu so im really grateful that you are in my life.
+
+Nee enakaga ivlo  panna nudrathukaga mattum u deserve me nu lam illa athellam illamalum enaku unnayum un character ah yum romba pudikum like the way you take care of others , protect others the way you behave with girls and especially the way you treat your sisters ( im actually very jealous of it).nee unmailaye romba romba nallavan than lingesh yaarume unna maari iruka mudiyathu see unake therinjirukum unna yaaruku than pudikathu sollu oru pechiku kooda unkitta ithan kettta vishiyam nu solla ethuvume illa avlo nallavan nee and i want to tell this to you on your special day actually im very proud of how far you came and how much of a man you have become enaku theriyum nee innum unnoda "boy" nu sollikira vayasula than iruka nu but you are so mature and you are "my man".
+
+11th la nee irunthatha vida nee  ippo evlo maariruka theriyuma romba azhagu airuka like manly airuka un body lam semmaya tone aagi athelete body maari iruku muscles lam vechi un shoulders lam pakkava irukum aprm en chellam crt aana height uh theriyuma enaku romba pudikum like unkooda nickum pothu romba height ah vum illa athe samayam unkooda irukum pothu nee enna protect pannuva nudra maariyum irukum , appolam unkitta oru rendu ketta vishiyam or annoying thing irukum aana ipo athuvum unkitta illa naanu mattum konjum aachu kolaru thanam lam illa oru nrml person ah irunthana, you are literally a gem. enaku unna romba nalla oru kolandha maari treat pannanum unaku thevayanatha lam vaangi tharanum unna sandhoshama vechikanum unnaku pudicha edathuku ponum unaku pudicha maari nadanthanum nu thonum aan amaranthu maranthu enaku pudcha maari tha pannuven enaku theiryum ellarum un vayasula avangaluku pudicha maari than iruka nenaipanga aana nee eppavum un family ah nenachi tha paakra like bike kooda avangaluku pudicha maari vaanga nenaipanga aana nee fam ku ethu set aagum nu paathu mature ah iruka you have never once complained enaku ithu than aasa aana ivangalala itha vaanga vendiyatha pochunu lam nee enikume compliant pannala aana ore oru aaasa puppy enaku unaku edachu wish vechiko edachu vaanganum nu nenachi aaasa vechiko fam kaaga enakga panra elam okay unakaga nee sandhosha padra maari edachu onnu aachu vechiko or apdi irunthu enkitta sollu please itha padicha odane, enaku enkitta  oru 30k vandhuchunu vechika atha ellathayume kooda unakga unkooda spend pannanum kanake paakama unna santhoshama vechikanum nu lam thonum aana unna epdi santhosha padutha nu enaku theriyala cuz nee enkitta ethuvum sonnathum illa paapa kitta kaasum illa 🙁
+
+ summa un life enaku oru bf ah irukanum un fam ku responsible ah vela lam paakanum athellam illama unnoda life nu paaru unakaga selavu pannu cuz you deserve to live it happily cheriya unaku enna pudichiruko pannu ,ipdi Nallava maari pesuven and pesuren aana unakunu oru hobby or pudicha vishiyam  illathathuku kaaranam naanu tha and ippo nee pudhusa onnu uruvaakunalum i dont think i can accept it kandipa sanda poduven idk i feel like i always want to you chat with me and always be with me athu nadakathappo naanu sanda poduren ithula un thappulam ethume illa ily ennala mudinja veraikum unna stress aaga vidama iruka try panren sanda podama apdi illama edachu pannen na just enmela kathi vitru illana logic ah pesu konjum aachu en delusion vittu vella varuven and indha vishiyathalam paathum enn vittu pogama ivlo naaal en koodave irunthu itha pathi purunji enmela verupu kaatama irukana nee evlo thangam nu paaru . Please naanu ithana naal sandaila sonnathu unna thittunathalam ethayume perusa eduthukatha chellam pleaseee naanu ithuku aprm edachu pesunalum eduthukatha naanu ethayume mean panla ellame kovathula appo appo solrathu than unmelayum thappu illa enmelayu thappu illa we just dont match avlo than okay va please naanu ithu veraikum sonna ovvonum unaku nyabagam iruku and athunaala unaku stress aagi eppavum kovapattu athunala un character la maatram erpattu enna thittura nu sonnala im so sorry lingesh naanu pesuna ellame kovathula naanu mean panla lingesh ithan naanu entha kovamum illama theliva ysoichi solrathu please ellam maranthutu nrml ah iru nee enna evlo asingama vena thittiko i dont care again naanu kandipa unkooda pesuven and enaku ellame maranthudum ana nee matum stress aagatha sorry enaku theiryama poiduchu unna ithu evlo affect pannum nu lam sorrry.finally i hope you feel special on your special day and lastly i selfishly wish you dont love anyone as much you love me unless they treat you better than me . Lastly stay happy you deserve it . 
+
+
+</p>
+
+    <div class="ending">
+        ♡ always, me ♡
+    </div>
+
+</div>
+<!-- NEXT PAGE BUTTON -->
+<a href="page7.html" class="next-page-btn">
+    continue ♡
+    <span>→</span>
+</a>
+
+<style>
+.next-page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    width: 190px;
+    margin: 45px auto 20px;
+
+    padding: 13px 22px;
+
+    background: #e4ddd0;
+    color: #806579;
+
+    border: 1px solid #c8c0b2;
+    border-radius: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    box-shadow: 0 5px 12px rgba(100, 110, 100, 0.12);
+
+    transition: all 0.25s ease;
+}
+
+.next-page-btn span {
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+.next-page-btn:hover {
+    background: #dce7df;
+    color: #78929a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(100, 110, 100, 0.16);
+}
+
+.next-page-btn:hover span {
+    transform: translateX(5px);
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Memories ❤️</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #5b3d4c;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 225, 225, 0.9),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(225, 215, 255, 0.7),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #77627f,
+            #b4869a,
+            #e6b6b2,
+            #f4d4bd
+        );
+}
+
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+.glow {
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 239, 220, 0.25);
+
+    filter: blur(50px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.glow.one {
+    top: 5%;
+    left: -100px;
+}
+
+.glow.two {
+    top: 45%;
+    right: -120px;
+}
+
+.glow.three {
+    bottom: 5%;
+    left: 30%;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 15px rgba(255,255,255,0.7);
+
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: 0.25;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: fixed;
+
+    bottom: -30px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.page {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 70px 20px 100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    text-align: center;
+
+    max-width: 700px;
+
+    animation: fadeUp 1.3s ease;
+}
+
+.smallTitle {
+    color: white;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 3px 15px rgba(60,30,50,0.3);
+}
+
+h1 {
+    margin: 0;
+
+    color: white;
+
+    font-size: clamp(42px, 8vw, 75px);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+
+    text-shadow:
+        0 7px 25px rgba(60,30,50,0.3);
+}
+
+.introText {
+    margin-top: 25px;
+
+    color: white;
+
+    font-family:
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   MEMORY CONTAINER
+========================= */
+
+.memories {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin-top: 70px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 100px;
+}
+
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    animation: fadeUp 1s ease both;
+}
+
+.memoryNumber {
+    color: rgba(255,255,255,0.85);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   POLAROID PHOTO
+========================= */
+
+.photoFrame {
+
+    width: min(470px, 88vw);
+
+    padding: 14px 14px 45px;
+
+    background: #fffaf4;
+
+    box-shadow:
+        0 25px 50px rgba(55,30,45,0.28);
+
+    transform: rotate(-2deg);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+
+    position: relative;
+}
+
+.photoFrame:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+
+    box-shadow:
+        0 35px 65px rgba(55,30,45,0.35);
+}
+
+.photoFrame img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 390px;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   LITTLE TAPE
+========================= */
+
+.tape {
+
+    position: absolute;
+
+    top: -17px;
+
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    width: 105px;
+    height: 32px;
+
+    background: rgba(255, 231, 191, 0.72);
+
+    box-shadow:
+        0 3px 7px rgba(50,30,40,0.1);
+
+    z-index: 3;
+}
+
+
+/* =========================
+   VIDEO FRAME
+========================= */
+
+.videoFrame {
+
+    width: min(700px, 92vw);
+
+    padding: 12px;
+
+    background:
+        rgba(255,250,247,0.82);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 55px rgba(55,30,45,0.3);
+
+    transform: rotate(1deg);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.videoFrame:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-7px);
+
+    box-shadow:
+        0 35px 70px rgba(55,30,45,0.35);
+}
+
+.videoFrame video {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 500px;
+
+    border-radius: 10px;
+
+    background: #2d2430;
+}
+
+
+/* =========================
+   CAPTION
+========================= */
+
+.caption {
+
+    width: min(650px, 92vw);
+
+    margin-top: 30px;
+
+    padding: 25px 30px;
+
+    position: relative;
+
+    text-align: center;
+
+    background:
+        rgba(255,248,244,0.84);
+
+    border-radius: 5px 22px 5px 22px;
+
+    box-shadow:
+        0 15px 35px rgba(55,30,45,0.16);
+
+    border:
+        1px solid rgba(255,255,255,0.8);
+}
+
+.caption:before {
+
+    content: "♥";
+
+    position: absolute;
+
+    top: -13px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #b97889;
+
+    color: white;
+
+    font-size: 12px;
+}
+
+.caption p {
+
+    margin: 0;
+
+    font-family:
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: clamp(15px, 2.5vw, 19px);
+
+    line-height: 1.8;
+
+    color: #654554;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    color: rgba(255,255,255,0.8);
+
+    margin-top: 5px;
+}
+
+.divider:before,
+.divider:after {
+
+    content: "";
+
+    width: 80px;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.45);
+}
+
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.finalSection {
+
+    margin-top: 110px;
+
+    max-width: 700px;
+
+    text-align: center;
+
+    animation: fadeUp 1.5s ease;
+}
+
+.finalSection h2 {
+
+    color: white;
+
+    font-size: clamp(28px, 5vw, 43px);
+
+    font-weight: normal;
+
+    line-height: 1.3;
+
+    text-shadow:
+        0 5px 20px rgba(60,30,50,0.3);
+}
+
+.finalSection p {
+
+    color: white;
+
+    font-family:
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.nextButton {
+
+    margin-top: 30px;
+
+    padding: 16px 34px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff9f2,
+            #f6d6d7
+        );
+
+    color: #75495b;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 30px rgba(55,30,45,0.22);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nextButton:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 22px 40px rgba(55,30,45,0.3);
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.musicButton {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,250,247,0.92);
+
+    box-shadow:
+        0 8px 20px rgba(50,25,40,0.2);
+
+    font-size: 19px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 600px) {
+
+    .page {
+        padding-top: 45px;
+    }
+
+    .memories {
+        gap: 75px;
+    }
+
+    .photoFrame {
+        padding-bottom: 35px;
+    }
+
+    .photoFrame img {
+        height: 330px;
+    }
+
+    .caption {
+        padding: 24px 20px;
+    }
+
+    .caption p {
+        font-size: 15px;
+    }
+
+    .finalSection {
+        margin-top: 80px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div class="glow three"></div>
+
+
+<!-- STARS -->
+
+<div class="stars">
+
+    <span class="star" style="left:8%;top:12%;"></span>
+    <span class="star" style="left:19%;top:25%;"></span>
+    <span class="star" style="left:34%;top:8%;"></span>
+    <span class="star" style="left:51%;top:18%;"></span>
+    <span class="star" style="left:67%;top:9%;"></span>
+    <span class="star" style="left:82%;top:20%;"></span>
+    <span class="star" style="left:92%;top:40%;"></span>
+    <span class="star" style="left:12%;top:55%;"></span>
+    <span class="star" style="left:76%;top:60%;"></span>
+
+</div>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart"
+     style="left:8%;animation-duration:11s;">
+    ♡
+</div>
+
+<div class="heart"
+     style="left:25%;animation-duration:14s;animation-delay:3s;">
+    ♡
+</div>
+
+<div class="heart"
+     style="left:48%;animation-duration:12s;animation-delay:1s;">
+    ♡
+</div>
+
+<div class="heart"
+     style="left:70%;animation-duration:15s;animation-delay:4s;">
+    ♡
+</div>
+
+<div class="heart"
+     style="left:88%;animation-duration:10s;animation-delay:2s;">
+    ♡
+</div>
+
+
+<!-- MAIN -->
+
+<main class="page">
+
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+        <div class="smallTitle">
+            our little story
+        </div>
+
+        <h1>
+            Our Memories
+            ❤️
+        </h1>
+
+        <div class="introText">
+
+            Before we move on...
+            <br>
+
+            let's go back for a little while. 🥹❤️
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section class="memories">
+
+
+        <!-- =========================
+             MEMORY 1 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 01 · where it started
+            </div>
+
+
+            <div class="photoFrame">
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory1.jpg"
+                    alt="Memory 1"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    one of the first pics we ever took it all started here
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 2 - VIDEO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 02 · my puppy
+            </div>
+
+
+            <div class="videoFrame">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="videos/memory1.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support video.
+
+                </video>
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    indha vdo la nejama en puppy iruka azhaga paapa romba rasicha puppy romba romba azhaga irunthan sirikira appo semma cute uh
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 3 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 03 · this one ❤️️
+            </div>
+
+
+            <div
+                class="photoFrame"
+                style="transform: rotate(2deg);"
+            >
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory2.jpg"
+                    alt="Memory 3"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    ithu nyabagam iruka, puppy konjum konjum ah paapa kooda vilayatu thanama iruka aarambichathu paapa solratha apdiye pannan,venam pannna maaten nu lam sollala , athunaalaye ithu paapa ku romva romba pudicha pic
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 4 - VIDEO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 04 · just us
+            </div>
+
+
+            <div
+                class="videoFrame"
+                style="transform: rotate(-1deg);"
+            >
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="videos/memory2.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support video.
+
+                </video>
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    ithuvum athe tha indha video edukura appo namba thaniya romba jolly ah irunthom i just never wanna forget those
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 5 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 05 · my cute puppy
+            </div>
+
+
+            <div
+                class="photoFrame"
+                style="transform: rotate(-3deg);"
+            >
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory3.jpg"
+                    alt="Memory 5"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    ithulayum en puppy semma cute
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 6 - VIDEO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 06 · always
+            </div>
+
+
+            <div
+                class="videoFrame"
+                style="transform: rotate(1deg);"
+            >
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="videos/memory3.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support video.
+
+                </video>
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    paapa eppavum ipdi puppy kooda vilayaditu puppy ah pudichi killite irukanum
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 7 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 07 · special moments
+            </div>
+
+
+            <div
+                class="photoFrame"
+                style="transform: rotate(-2deg);"
+            >
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory4.jpg"
+                    alt="Memory 7"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    indha pic paathiya ithu enaku romba pudicha oru pic namba function dress la azhaga irukum pothu edutha pic ithula nee evlo azhaga sirikira paaru namba paaka cute couple maari irukom 🥹❤️
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 8 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 08 · precious smile
+            </div>
+
+
+            <div
+                class="photoFrame"
+                style="transform: rotate(3deg);"
+            >
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory5.jpg"
+                    alt="Memory 8"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    this is my most favourite recent pic namba same colour dress ( enaku romba naal aasa btw) athuvum illama nee vidura athu look uh 💕 paaa mudila vitta unna ippove thookitu poiduven apdi feel aaguthu
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MEMORY 9 - PHOTO
+        ========================== -->
+
+        <div class="memory">
+
+            <div class="memoryNumber">
+                memory 09 · forever & ever
+            </div>
+
+
+            <div
+                class="photoFrame"
+                style="transform: rotate(-1deg);"
+            >
+
+                <div class="tape"></div>
+
+                <img
+                    src="images/memory6.jpg"
+                    alt="Memory 9"
+                >
+
+            </div>
+
+
+            <div class="caption">
+
+                <p>
+                    ithula paaru indha pic ah naanu oru 100 vaati aachu paathu jollu vitrupen un eyelashes uh unnoda freckles uh ,indha pic ah tha ellaru kittayum kaati scene potten ellarume en puppy mela kannu vechanga nejamaaaa ❤️✨
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="finalSection">
+
+
+        <div class="divider">
+            ✦ ❤️ ✦
+        </div>
+
+
+        <h2>
+
+            These are only a few
+            of my favourite memories with you... 🥹
+
+        </h2>
+
+
+        <p>
+             innum eriya iruku sollanum na sollite polamm ❤️
+
+        </p>
+
+
+        <button
+            class="nextButton"
+            onclick="goNext()"
+        >
+
+            There's something I want to tell you... 💌
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- MUSIC -->
+
+<audio
+    id="memoryMusic"
+    loop
+>
+
+    <source
+        src="audio/birthday-song.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    class="musicButton"
+    id="musicButton"
+    onclick="toggleMusic()"
+>
+    🎵
+</button>
+
+
+<script>
+
+/* =========================
+   MUSIC
+   CONTINUE FROM PAGE 3
+========================= */
+
+const music =
+    document.getElementById("memoryMusic");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+music.volume = 0.3;
+
+
+/*
+   Restore the exact position
+   saved from the previous page.
+*/
+
+music.addEventListener("loadedmetadata", function() {
+
+    const savedTime =
+        parseFloat(
+            sessionStorage.getItem("birthdayMusicTime")
+        );
+
+    if (
+        !Number.isNaN(savedTime) &&
+        savedTime >= 0 &&
+        savedTime < music.duration
+    ) {
+
+        music.currentTime = savedTime;
+
+    }
+
+});
+
+
+/*
+   Save the current music position
+   while the song is playing.
+*/
+
+music.addEventListener("timeupdate", function() {
+
+    if (!music.paused) {
+
+        sessionStorage.setItem(
+            "birthdayMusicTime",
+            music.currentTime
+        );
+
+    }
+
+});
+
+
+/*
+   Also save the position when
+   leaving Page 4.
+*/
+
+window.addEventListener("pagehide", function() {
+
+    sessionStorage.setItem(
+        "birthdayMusicTime",
+        music.currentTime
+    );
+
+});
+
+
+/*
+   Try to continue the music automatically.
+
+   If the browser blocks autoplay,
+   clicking the music button will start it.
+*/
+
+window.addEventListener("load", function() {
+
+    music.play().then(function() {
+
+        musicButton.innerText = "🔊";
+
+    }).catch(function() {
+
+        musicButton.innerText = "🎵";
+
+    });
+
+});
+
+
+/*
+   If autoplay was blocked,
+   the first click anywhere on the page
+   can start the music.
+*/
+
+document.addEventListener("click", function startMusicOnce() {
+
+    if (music.paused) {
+
+        music.play().then(function() {
+
+            musicButton.innerText = "🔊";
+
+        }).catch(function() {});
+
+    }
+
+    document.removeEventListener(
+        "click",
+        startMusicOnce
+    );
+
+});
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play().then(function() {
+
+            musicButton.innerText = "🔊";
+
+        }).catch(function() {});
+
+    }
+
+    else {
+
+        music.pause();
+
+        sessionStorage.setItem(
+            "birthdayMusicTime",
+            music.currentTime
+        );
+
+        musicButton.innerText = "ff0000";
+
+    }
+
+}
+
+
+/* =========================
+   NEXT PAGE
+========================= */
+
+function goNext() {
+
+    /*
+       Save exact position before
+       moving to Page 6.
+    */
+
+    sessionStorage.setItem(
+        "birthdayMusicTime",
+        music.currentTime
+    );
+
+    window.location.href =
+        "page6.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

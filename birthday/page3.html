@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% 42%, #fff8fb 0%, #ffe8f1 32%, #e5d9ff 70%, #cfeaff 100%);
+    color:#633e58;
+}
+
+/* ---------------- COUNTDOWN ---------------- */
+
+#countdownScreen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+        radial-gradient(circle at center, #fffaff 0%, #ffe6f0 42%, #ddd7ff 100%);
+    transition:opacity .8s ease, visibility .8s ease;
+}
+
+#countdownScreen.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.readyText{
+    font-size:clamp(20px,5vw,34px);
+    font-weight:bold;
+    color:#d95189;
+    margin-bottom:22px;
+    letter-spacing:1px;
+}
+
+.countNumber{
+    font-size:clamp(100px,25vw,220px);
+    line-height:.9;
+    font-weight:900;
+    color:#ef5d98;
+    text-shadow:
+        0 8px 0 #ffd0e1,
+        0 15px 35px rgba(205,76,130,.25);
+    animation:countPop .85s ease;
+}
+
+@keyframes countPop{
+    0%{transform:scale(.2) rotate(-8deg);opacity:0}
+    65%{transform:scale(1.15) rotate(3deg);opacity:1}
+    100%{transform:scale(1) rotate(0);opacity:1}
+}
+
+/* ---------------- PARTY STAGE ---------------- */
+
+#party{
+    position:relative;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transform:scale(.96);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+#party.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* ---------------- BALLOONS ---------------- */
+
+.balloon{
+    position:absolute;
+    width:clamp(55px,8vw,105px);
+    aspect-ratio:.78;
+    border-radius:50% 50% 46% 46%;
+    z-index:3;
+    animation:balloonFloat 3.2s ease-in-out infinite;
+    box-shadow:
+        inset -12px -10px 18px rgba(0,0,0,.08),
+        inset 12px 8px 14px rgba(255,255,255,.45),
+        0 12px 22px rgba(90,60,100,.12);
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:clamp(70px,13vh,140px);
+    background:rgba(90,70,90,.35);
+    left:50%;
+    top:100%;
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    width:9px;
+    height:9px;
+    background:inherit;
+    bottom:-3px;
+    left:calc(50% - 4px);
+    transform:rotate(45deg);
+}
+
+.b1{left:3%;top:9%;background:#ff8fb5;animation-delay:0s}
+.b2{left:12%;top:22%;background:#9bdcff;animation-delay:.5s}
+.b3{left:22%;top:4%;background:#c6a4ff;animation-delay:1s}
+.b4{right:4%;top:10%;background:#ffd66e;animation-delay:.3s}
+.b5{right:14%;top:23%;background:#ff9bd1;animation-delay:.9s}
+.b6{right:23%;top:5%;background:#91e2bf;animation-delay:1.3s}
+.b7{left:1%;bottom:13%;background:#b99cff;animation-delay:1.6s}
+.b8{right:2%;bottom:12%;background:#ffad85;animation-delay:.7s}
+
+@keyframes balloonFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-18px) rotate(4deg)}
+}
+
+/* ---------------- CONFETTI ---------------- */
+
+.confetti{
+    position:absolute;
+    top:-30px;
+    width:10px;
+    height:18px;
+    z-index:8;
+    animation:fall linear infinite;
+    opacity:.9;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-40px) rotate(0deg);
+        opacity:0;
+    }
+    8%{opacity:1}
+    100%{
+        transform:translateY(115vh) rotate(720deg);
+        opacity:.9;
+    }
+}
+
+/* ---------------- FLOATING HEARTS ---------------- */
+
+.floatHeart{
+    position:absolute;
+    z-index:2;
+    font-size:clamp(20px,3vw,35px);
+    animation:heartFloat 4s ease-in-out infinite;
+    opacity:.75;
+}
+
+.fh1{left:10%;top:58%}
+.fh2{right:10%;top:55%;animation-delay:1s}
+.fh3{left:25%;bottom:8%;animation-delay:1.7s}
+.fh4{right:25%;bottom:10%;animation-delay:.6s}
+
+@keyframes heartFloat{
+    0%,100%{transform:translateY(0) scale(1)}
+    50%{transform:translateY(-20px) scale(1.12)}
+}
+
+/* ---------------- TOP TEXT ---------------- */
+
+.heading{
+    position:absolute;
+    top:3.5%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    text-align:center;
+    width:90%;
+}
+
+.heading h1{
+    font-size:clamp(28px,6vw,60px);
+    color:#df4f8d;
+    text-shadow:0 4px 0 rgba(255,255,255,.8);
+}
+
+.heading p{
+    margin-top:5px;
+    font-size:clamp(14px,2.5vw,20px);
+    color:#80536f;
+}
+
+/* ---------------- CHARACTER PICS ---------------- */
+
+/* ---------------- CHIBIS WAITING AROUND THE CAKE ---------------- */
+
+.characterCircle{
+    position:absolute;
+    width:clamp(135px,15vw,190px);
+    height:clamp(135px,15vw,190px);
+    border-radius:50%;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    overflow:hidden;
+    z-index:7; /* behind the cake */
+    background:
+        radial-gradient(circle at 50% 35%,
+            rgba(255,255,255,.98),
+            rgba(255,232,244,.9) 58%,
+            rgba(224,210,255,.9));
+    border:5px solid rgba(255,255,255,.95);
+    box-shadow:
+        0 10px 25px rgba(91,66,110,.16),
+        0 0 0 5px rgba(255,196,222,.35);
+    animation:circleBob 3s ease-in-out infinite;
+}
+
+.characterCircle::before{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border-radius:50%;
+    border:2px dashed rgba(224,126,171,.38);
+    pointer-events:none;
+}
+
+.characterCircle .character{
+    position:relative;
+    width:88%;
+    height:88%;
+    object-fit:contain;
+    z-index:2;
+    filter:drop-shadow(0 7px 7px rgba(75,53,83,.18));
+    animation:none;
+}
+
+.c1Circle{
+    left:calc(50% - 430px);
+    top:45%;
+    transform:translateY(-50%);
+    animation-delay:.1s;
+}
+
+.c2Circle{
+    left:calc(50% - 305px);
+    top:66%;
+    transform:translateY(-50%);
+    animation-delay:.65s;
+}
+
+.c3Circle{
+    right:calc(50% - 305px);
+    top:66%;
+    transform:translateY(-50%);
+    animation-delay:1.15s;
+}
+
+.c4Circle{
+    right:calc(50% - 430px);
+    top:45%;
+    transform:translateY(-50%);
+    animation-delay:1.7s;
+}
+
+@keyframes circleBob{
+    0%,100%{
+        margin-top:0;
+    }
+    50%{
+        margin-top:-8px;
+    }
+}
+
+@media(max-width:1050px){
+    .characterCircle{
+        width:clamp(115px,15vw,165px);
+        height:clamp(115px,15vw,165px);
+    }
+
+    .c1Circle{left:calc(50% - 355px)}
+    .c2Circle{left:calc(50% - 255px)}
+    .c3Circle{right:calc(50% - 255px)}
+    .c4Circle{right:calc(50% - 355px)}
+}
+
+@media(max-width:700px){
+    .characterCircle{
+        width:105px;
+        height:105px;
+        border-width:3px;
+    }
+
+    .c1Circle{
+        left:3%;
+        top:43%;
+    }
+
+    .c2Circle{
+        left:14%;
+        top:67%;
+    }
+
+    .c3Circle{
+        right:14%;
+        top:67%;
+    }
+
+    .c4Circle{
+        right:3%;
+        top:43%;
+    }
+
+    .characterCircle .character{
+        width:92%;
+        height:92%;
+    }
+}
+
+/* ---------------- CAKE IMAGE ---------------- */
+
+.cakeArea{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-45%);
+    z-index:9;
+    text-align:center;
+    width:min(760px,92vw);
+}
+
+.cakeGlow{
+    position:absolute;
+    width:clamp(330px,58vw,700px);
+    height:clamp(330px,58vw,700px);
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+        rgba(255,255,255,.98) 0%,
+        rgba(255,219,239,.65) 35%,
+        rgba(211,198,255,.22) 64%,
+        transparent 73%);
+    filter:blur(10px);
+    z-index:-1;
+}
+
+.cake{
+    position:relative;
+    width:clamp(280px,55vw,620px);
+    margin:0 auto;
+    transform-origin:center bottom;
+    animation:cakeFloat 3s ease-in-out infinite;
+}
+
+.cake img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    filter:
+        drop-shadow(0 18px 16px rgba(88,53,88,.16))
+        drop-shadow(0 0 18px rgba(255,179,215,.25));
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+@keyframes cakeFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-.4deg);
+    }
+    50%{
+        transform:translateY(-9px) rotate(.4deg);
+    }
+}
+
+.cakeSparkle{
+    position:absolute;
+    z-index:12;
+    pointer-events:none;
+    animation:cakeSparkle 1.8s ease-in-out infinite;
+}
+
+.cakeSparkle.s1{
+    left:4%;
+    top:22%;
+    animation-delay:.2s;
+}
+
+.cakeSparkle.s2{
+    right:5%;
+    top:34%;
+    animation-delay:.8s;
+}
+
+.cakeSparkle.s3{
+    left:13%;
+    bottom:17%;
+    animation-delay:1.2s;
+}
+
+.cakeSparkle.s4{
+    right:13%;
+    bottom:20%;
+    animation-delay:.5s;
+}
+
+@keyframes cakeSparkle{
+    0%,100%{
+        transform:scale(.75) rotate(0);
+        opacity:.45;
+    }
+    50%{
+        transform:scale(1.2) rotate(18deg);
+        opacity:1;
+    }
+}
+
+.cake.cut{
+    animation:cakeCut .7s ease forwards;
+}
+
+@keyframes cakeCut{
+    0%{transform:scale(1) rotate(0)}
+    35%{transform:scale(1.07) rotate(-2deg)}
+    70%{transform:scale(1.04) rotate(2deg)}
+    100%{transform:scale(1.02) rotate(0)}
+}
+
+.cakeMessage{
+    margin-top:-2px;
+    font-size:clamp(16px,3vw,25px);
+    font-weight:800;
+    color:#df4f8d;
+    text-shadow:0 2px 0 #fff;
+}
+
+@media(max-width:700px){
+    .cakeArea{
+        top:49%;
+        width:94vw;
+    }
+
+    .cake{
+        width:min(430px,90vw);
+    }
+
+    .cakeMessage{
+        font-size:17px;
+    }
+}
+
+/* ---------------- ACTION BUTTONS ---------------- */
+
+.actions{
+    position:absolute;
+    left:50%;
+    bottom:3%;
+    transform:translateX(-50%);
+    z-index:20;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    width:92%;
+}
+
+.actionBtn{
+    border:none;
+    border-radius:999px;
+    padding:13px 23px;
+    background:rgba(255,255,255,.9);
+    color:#d94e88;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 9px 25px rgba(100,60,100,.16);
+    transition:.25s;
+}
+
+.actionBtn:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.actionBtn:active{
+    transform:scale(.96);
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ---------------- FINISH MESSAGE ---------------- */
+
+.finish{
+    position:absolute;
+    inset:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    background:rgba(255,244,249,.88);
+    backdrop-filter:blur(10px);
+    opacity:0;
+    pointer-events:none;
+    transition:.6s;
+}
+
+.finish.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.finishCard{
+    width:min(620px,92vw);
+    padding:38px 25px;
+    border-radius:35px;
+    background:white;
+    box-shadow:0 25px 70px rgba(100,60,100,.2);
+}
+
+.finishCard h2{
+    color:#df4f8d;
+    font-size:clamp(30px,7vw,55px);
+    margin-bottom:15px;
+}
+
+.finishCard p{
+    font-size:clamp(18px,4vw,24px);
+    line-height:1.6;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:700px){
+
+    .heading{
+        top:2%;
+    }
+
+    .heading p{
+        display:none;
+    }
+
+    .character{
+        width:85px;
+        height:85px;
+    }
+
+    .c1{left:1%;bottom:12%}
+    .c2{left:10%;bottom:5%}
+    .c3{right:10%;bottom:5%}
+    .c4{right:1%;bottom:12%}
+
+    .cakeArea{
+        top:49%;
+        transform:translate(-50%,-45%);
+    }
+
+    .cake{
+        width:340px;
+        height:270px;
+        max-width:90vw;
+    }
+
+    .actions{
+        bottom:2%;
+    }
+
+    .actionBtn{
+        padding:11px 17px;
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= COUNTDOWN ================= -->
+
+<section id="countdownScreen">
+    <div class="readyText">Ready for your surprise? 👀❤️</div>
+    <div class="countNumber" id="countNumber">3</div>
+</section>
+
+
+<!-- ================= PARTY ================= -->
+
+<main id="party">
+
+    <div class="heading">
+        <h1> HAPPY BIRTHDAY LINGESH! </h1>
+        <p>Someone has been waiting to celebrate you... ❤️</p>
+    </div>
+
+
+    <!-- BALLOONS -->
+
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+    <div class="balloon b6"></div>
+    <div class="balloon b7"></div>
+    <div class="balloon b8"></div>
+
+
+    <!-- FLOATING HEARTS -->
+
+    <div class="floatHeart fh1">💗</div>
+    <div class="floatHeart fh2">❤️</div>
+    <div class="floatHeart fh3">💕</div>
+    <div class="floatHeart fh4">💖</div>
+
+
+    <!-- CONFETTI GENERATED BY JS -->
+
+    <div id="confettiContainer"></div>
+
+
+    <!-- CHARACTER PICTURES -->
+
+    <div class="characterCircle c1Circle">
+        <img src="images/chibi0.png" class="character" alt="Paapa chibi">
+    </div>
+
+    <div class="characterCircle c2Circle">
+        <img src="images/chibi1.png" class="character" alt="Character">
+    </div>
+
+    <div class="characterCircle c3Circle">
+        <img src="images/chibi2.png" class="character" alt="Character">
+    </div>
+
+    <div class="characterCircle c4Circle">
+        <img src="images/chibi3.png" class="character" alt="Character">
+    </div>
+
+
+    <!-- BIG CARTOON CAKE -->
+
+    <section class="cakeArea">
+
+        <div class="cakeGlow"></div>
+
+        <div class="cake">
+                <img src="images/cake.jpg" alt="Birthday cake">
+
+                <div class="cakeSparkle s1">✨</div>
+                <div class="cakeSparkle s2">✨</div>
+                <div class="cakeSparkle s3">💖</div>
+                <div class="cakeSparkle s4">✨</div>
+            </div>
+
+            <div class="layerBottom"></div>
+            <div class="layerTop"></div>
+
+            <div class="frosting"></div>
+
+            <div class="drip d1"></div>
+            <div class="drip d2"></div>
+            <div class="drip d3"></div>
+
+            <div class="cherry ch1"></div>
+            <div class="cherry ch2"></div>
+            <div class="cherry ch3"></div>
+
+            <div class="candle can1">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle can2">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle can3">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+        <div class="cakeMessage">
+             Waiting for the birthday boy to blow the candles... 🥹❤️
+        </div>
+
+    </section>
+
+
+    <!-- INTERACTION -->
+
+    <div class="actions">
+
+        <button
+            class="actionBtn"
+            id="blowBtn"
+            onclick="blowCandles()">
+            💨 Blow the candles
+        </button>
+
+        <button
+            class="actionBtn hidden"
+            id="cutBtn"
+            onclick="cutCake()">
+            🔪 Cut the cake
+        </button>
+
+    </div>
+
+
+    <!-- FINAL -->
+
+    <section class="finish" id="finish">
+
+        <div class="finishCard">
+
+            <h2>🎉 Cake Cut! 🎉</h2>
+
+            <p>
+                Okay birthday boy... 🥹❤️
+                <br><br>
+                Now your actual birthday wish
+                is waiting for you.
+            </p>
+
+            <button class="actionBtn" onclick="goToPage3()">
+                ❤️ Open your birthday wish
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- HAPPY BIRTHDAY AUDIO -->
+
+<audio id="birthdaySong" preload="auto">
+    <source src="audio/cake-birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* ---------------- AUDIO ---------------- */
+
+const birthdaySong = document.getElementById("birthdaySong");
+
+birthdaySong.volume = 0.45;
+
+function startBirthdaySong(){
+
+    birthdaySong.play().catch(function(){
+
+        /*
+          Some browsers block audio after navigation or page load.
+          Any tap on the screen immediately triggers playback.
+        */
+
+    });
+
+}
+
+/* ---------------- COUNTDOWN ---------------- */
+
+const countdownScreen = document.getElementById("countdownScreen");
+const countNumber = document.getElementById("countNumber");
+const party = document.getElementById("party");
+
+let number = 3;
+
+const countdown = setInterval(function(){
+
+    number--;
+
+    if(number > 0){
+
+        countNumber.textContent = number;
+
+        countNumber.style.animation = "none";
+
+        void countNumber.offsetWidth;
+
+        countNumber.style.animation = "countPop .85s ease";
+
+    }else{
+
+        clearInterval(countdown);
+
+        countdownScreen.classList.add("hide");
+
+        // Immediately start audio as soon as countdown hits 0 / cake appears
+        startBirthdaySong();
+
+        setTimeout(function(){
+
+            party.classList.add("show");
+            createConfetti();
+
+        },500);
+
+    }
+
+},1000);
+
+
+/* ---------------- CONFETTI ---------------- */
+
+function createConfetti(){
+
+    const container =
+        document.getElementById("confettiContainer");
+
+    const pieces = [
+        "🎉","🎊","✨","💖","💕","⭐","🌸","🎀"
+    ];
+
+    for(let i = 0; i < 65; i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.textContent =
+            pieces[Math.floor(Math.random() * pieces.length)];
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 5) + "s";
+
+        piece.style.animationDelay =
+            (Math.random() * 4) + "s";
+
+        piece.style.fontSize =
+            (12 + Math.random() * 18) + "px";
+
+        container.appendChild(piece);
+    }
+
+}
+
+
+/* ---------------- BLOW CANDLES ---------------- */
+
+function blowCandles(){
+
+    startBirthdaySong();
+
+    document.querySelectorAll(".flame").forEach(function(flame){
+
+        flame.style.transition = "opacity .5s, transform .5s";
+        flame.style.opacity = "0";
+        flame.style.transform =
+            "translateX(-50%) scale(.1) translateY(-15px)";
+
+    });
+
+    document.querySelector(".cakeMessage").textContent =
+        "YAYYY! Candles blown! 🥹❤️";
+
+    document.getElementById("blowBtn")
+        .classList.add("hidden");
+
+    document.getElementById("cutBtn")
+        .classList.remove("hidden");
+
+    burstConfetti();
+
+}
+
+
+/* ---------------- CUT CAKE ---------------- */
+
+function cutCake(){
+
+    startBirthdaySong();
+
+    document.querySelector(".cake").classList.add("cut");
+
+    document.querySelector(".cakeMessage").textContent =
+        "Cake cuttt! 😭❤️";
+
+    burstConfetti();
+
+    setTimeout(function(){
+
+        document.getElementById("finish")
+            .classList.add("show");
+
+    },900);
+
+}
+
+
+/* ---------------- EXTRA CONFETTI BURST ---------------- */
+
+function burstConfetti(){
+
+    const container =
+        document.getElementById("confettiContainer");
+
+    for(let i = 0; i < 35; i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        const pieces = [
+            "🎉","🎊","✨","💗","💖","💕"
+        ];
+
+        piece.textContent =
+            pieces[Math.floor(Math.random()*pieces.length)];
+
+        piece.style.left = "50%";
+        piece.style.top = "42%";
+        piece.style.animationDuration =
+            (1.2 + Math.random() * 1.8) + "s";
+
+        piece.style.transform =
+            `translate(${(Math.random()-.5)*500}px,
+                       ${(Math.random()-.5)*350}px)`;
+
+        container.appendChild(piece);
+
+        setTimeout(function(){
+            piece.remove();
+        },3000);
+
+    }
+
+}
+
+
+/* ---------------- PAGE 3 ---------------- */
+
+function goToPage3(){
+
+    /*
+      Save the current song position so Page 3
+      can continue the same birthday song.
+    */
+
+    sessionStorage.setItem(
+        "birthdayMusicTime",
+        birthdaySong.currentTime
+    );
+
+    window.location.href = "page4.html";
+
+}
+
+
+/* ---------------- FALLBACK AUDIO START ---------------- */
+
+document.addEventListener("pointerdown",function(){
+
+    if(birthdaySong.paused){
+        birthdaySong.play().catch(function(){});
+    }
+
+},{once:false});
+
+</script>
+
+</body>
+</html>

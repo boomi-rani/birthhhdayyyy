@@ -1,0 +1,1003 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lingesh Case ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia,serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.7),transparent 20%),
+        radial-gradient(circle at 90% 15%,rgba(255,213,228,.55),transparent 20%),
+        radial-gradient(circle at 10% 90%,rgba(225,211,247,.45),transparent 20%),
+        linear-gradient(135deg,#f9e2ef 0%,#eadcf9 48%,#dfe9ff 100%);
+    color:#59495e;
+}
+
+/* BACKGROUND */
+
+.cloud{
+    position:fixed;
+    width:180px;
+    height:75px;
+    background:rgba(255,255,255,.4);
+    border-radius:100px;
+    filter:blur(2px);
+    pointer-events:none;
+}
+
+.cloud1{
+    top:8%;
+    left:-40px;
+}
+
+.cloud2{
+    bottom:12%;
+    right:-45px;
+    width:220px;
+}
+
+.sparkle{
+    position:fixed;
+    color:white;
+    opacity:.7;
+    animation:twinkle 2.5s infinite ease-in-out;
+    pointer-events:none;
+}
+
+.s1{top:15%;left:12%}
+.s2{top:27%;right:15%;animation-delay:.7s}
+.s3{bottom:20%;left:18%;animation-delay:1.2s}
+.s4{bottom:30%;right:8%;animation-delay:1.8s}
+
+@keyframes twinkle{
+    0%,100%{opacity:.25;transform:scale(.8)}
+    50%{opacity:1;transform:scale(1.2)}
+}
+
+.heart{
+    position:fixed;
+    opacity:.25;
+    font-size:20px;
+    animation:floatHeart 6s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.h1{left:8%;bottom:8%}
+.h2{right:10%;top:12%;animation-delay:2s}
+.h3{left:22%;top:7%;animation-delay:4s}
+
+@keyframes floatHeart{
+    0%,100%{transform:translateY(0) rotate(-8deg)}
+    50%{transform:translateY(-22px) rotate(8deg)}
+}
+
+
+/* SCENES */
+
+.scene{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+
+.scene.active{
+    display:flex;
+    animation:sceneIn .55s ease both;
+}
+
+@keyframes sceneIn{
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* WAIT SCREEN */
+
+.intro-box{
+    width:min(700px,90vw);
+    background:#fffdf8;
+    border:2px solid #efc9d5;
+    border-radius:24px;
+    padding:50px 40px;
+    text-align:center;
+    box-shadow:
+        0 30px 75px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+    position:relative;
+}
+
+.intro-box:after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border:2px dashed #ead4dc;
+    border-radius:17px;
+    pointer-events:none;
+}
+
+.intro-box h1{
+    position:relative;
+    z-index:2;
+    color:#79618b;
+    font-size:clamp(28px,5vw,45px);
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.intro-box p{
+    position:relative;
+    z-index:2;
+    font-size:17px;
+    line-height:1.7;
+    color:#6c596d;
+}
+
+.next-btn{
+    position:relative;
+    z-index:3;
+    margin-top:25px;
+    border:none;
+    background:linear-gradient(135deg,#f3a4bd,#c7afe7);
+    color:white;
+    padding:13px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    font-family:Arial,sans-serif;
+    box-shadow:0 8px 18px rgba(150,110,150,.22);
+}
+
+
+/* =========================
+   CASE REPORT
+   ========================= */
+
+.case-card{
+    width:min(850px,90vw);
+
+    height:min(82vh,700px);
+
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at 92% 10%,
+            rgba(255,213,228,.55),
+            transparent 16%
+        ),
+        radial-gradient(
+            circle at 8% 92%,
+            rgba(225,211,247,.45),
+            transparent 18%
+        ),
+        #fffdf8;
+
+    border:2px solid #efc9d5;
+    border-radius:24px;
+
+    padding:52px 42px 30px;
+
+    box-shadow:
+        0 30px 75px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+
+    transform:rotate(-.6deg);
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.case-card:after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border:2px dashed #ead4dc;
+    border-radius:17px;
+    pointer-events:none;
+}
+
+.case-ribbon{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    background:linear-gradient(135deg,#f3a7bf,#c9b2e9);
+    color:white;
+    padding:10px 24px 12px;
+    border-radius:0 0 15px 15px;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:.7px;
+    z-index:5;
+}
+
+.case-stamp{
+    position:absolute;
+    top:55px;
+    right:32px;
+    color:#e58ca9;
+    border:2px solid #e7a1b7;
+    border-radius:50%;
+    padding:10px 12px;
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    font-weight:bold;
+    transform:rotate(9deg);
+    opacity:.8;
+    z-index:5;
+}
+
+.case-title{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#786087;
+    font-size:clamp(23px,4vw,34px);
+    margin-bottom:25px;
+    padding-bottom:15px;
+    padding-right:120px;
+    border-bottom:2px dashed #e7ccd8;
+}
+
+.title-icon{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#f9d8e4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+
+/* LEFT SIDE PUPPY PHOTO */
+
+.case-photo{
+    position:absolute;
+
+    left:34px;
+    top:138px;
+
+    width:125px;
+    height:145px;
+
+    background:white;
+    padding:8px 8px 24px;
+
+    border:1px solid #dfd2d7;
+
+    box-shadow:0 8px 18px rgba(80,60,75,.15);
+
+    transform:rotate(-4deg);
+
+    z-index:3;
+}
+
+.case-photo img{
+    width:100%;
+    height:112px;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-label{
+    position:absolute;
+    bottom:5px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-family:"Courier New",monospace;
+    font-size:9px;
+    color:#907887;
+}
+
+
+/* CASE CONTENT */
+
+.case-lines{
+
+    width:calc(100% - 160px);
+
+    margin-left:160px;
+
+    position:relative;
+    z-index:2;
+}
+
+.case-line{
+    display:grid;
+    grid-template-columns:145px 1fr;
+    gap:12px;
+
+    padding:13px 0;
+
+    border-bottom:1px dashed #e8d7dd;
+
+    font-size:15px;
+    line-height:1.6;
+}
+
+.case-label{
+    color:#dc8ca7;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:.7px;
+}
+
+.case-value{
+    color:#5f5061;
+}
+
+.case-value strong{
+    color:#765c80;
+}
+
+.status-box{
+    margin-top:23px;
+    padding:15px 18px;
+
+    background:#fff3f7;
+    border:1px solid #f0cad8;
+    border-radius:15px;
+
+    position:relative;
+    z-index:2;
+}
+
+.status{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:20px;
+    background:#eadcf5;
+    color:#735b80;
+
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.status.strong{
+    background:#ffd7e3;
+    color:#bb607e;
+}
+
+
+/* AGREEMENT */
+
+.agreement{
+    width:min(780px,92vw);
+
+    background:#fffdf8;
+
+    border:2px solid #efc9d5;
+    border-radius:24px;
+
+    padding:45px 38px;
+
+    box-shadow:
+        0 30px 70px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+
+    position:relative;
+    text-align:center;
+}
+
+.agreement:after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border:2px dashed #e9d2dc;
+    border-radius:17px;
+    pointer-events:none;
+}
+
+.agreement h2,
+.agreement .subtitle,
+.characters,
+.terms,
+.agreement button{
+    position:relative;
+    z-index:2;
+}
+
+.agreement h2{
+    color:#7b6287;
+    font-size:32px;
+}
+
+.subtitle{
+    color:#a27c91;
+}
+
+.characters{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    margin:20px 0;
+}
+
+.character img{
+    width:120px;
+    height:140px;
+    object-fit:contain;
+}
+
+.character p{
+    font-size:13px;
+    color:#8a6d82;
+}
+
+.heart-between{
+    font-size:28px;
+}
+
+.terms{
+    text-align:left;
+    background:#fff4f7;
+    border-radius:16px;
+    padding:18px 22px;
+    border:1px solid #f0d2dc;
+}
+
+.terms h3{
+    color:#d4819d;
+}
+
+.terms p{
+    color:#655565;
+    line-height:1.7;
+}
+
+
+/* SIGNED */
+
+.signed-box{
+    width:min(650px,92vw);
+    background:#fffdf8;
+    border:2px solid #efc9d5;
+    border-radius:25px;
+    padding:55px 35px;
+    text-align:center;
+    box-shadow:
+        0 30px 70px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+}
+
+.signed-box h1{
+    color:#7a6386;
+    font-size:38px;
+}
+
+.signed-box p{
+    color:#766575;
+    line-height:1.7;
+}
+
+.accepted{
+    display:inline-block;
+    margin:25px 0;
+    padding:14px 22px;
+    border:3px solid #d98fa8;
+    color:#cf7996;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    letter-spacing:2px;
+    transform:rotate(-5deg);
+    border-radius:8px;
+}
+
+
+/* FINAL */
+
+.final-box{
+    width:min(700px,92vw);
+    text-align:center;
+    background:#fffdf8;
+    border:2px solid #efc9d5;
+    border-radius:26px;
+    padding:60px 35px;
+    box-shadow:
+        0 30px 75px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+}
+
+.final-box h1{
+    color:#786087;
+    font-size:clamp(35px,6vw,55px);
+}
+
+.final-box p{
+    color:#6c596d;
+    line-height:1.8;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    .scene{
+        padding:12px;
+    }
+
+    .case-card{
+        width:94vw;
+        height:90vh;
+        padding:52px 22px 30px;
+    }
+
+    .case-stamp{
+        right:18px;
+        transform:rotate(9deg) scale(.8);
+    }
+
+    .case-title{
+        padding-right:85px;
+        font-size:23px;
+    }
+
+    .case-photo{
+        position:relative;
+        left:auto;
+        top:auto;
+        margin:0 auto 20px;
+        transform:rotate(-3deg);
+    }
+
+    .case-lines{
+        width:100%;
+        margin-left:0;
+    }
+
+    .case-line{
+        grid-template-columns:105px 1fr;
+        gap:8px;
+        font-size:13px;
+    }
+
+    .characters{
+        gap:12px;
+    }
+
+    .character img{
+        width:95px;
+        height:110px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">✦</div>
+<div class="sparkle s4">✧</div>
+
+<div class="heart h1">♡</div>
+<div class="heart h2">♡</div>
+<div class="heart h3">♡</div>
+
+
+<!-- ========================================= -->
+<!-- PAGE 7 OFFICIALLY STARTS HERE -->
+<!-- ========================================= -->
+
+
+<!-- PUNISHMENT INTRO -->
+
+<section class="scene active" id="punishmentIntro">
+
+    <div class="intro-box">
+
+        <h1>
+            WAIT...<br>
+            THE PUNISHMENT IS NOT OVER YET. 👀
+        </h1>
+
+        <p>
+            You thought you were finally free, Lingesh? 😭
+            <br><br>
+            Unfortunately...
+            <br>
+            Paapa has submitted one final complaint. 💌
+        </p>
+
+        <button class="next-btn" onclick="nextScene()">
+            TAP TO OPEN THE FINAL CASE FILE 👀
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CASE REPORT -->
+
+<section class="scene" id="punishmentCase">
+
+    <div class="case-card">
+
+        <div class="case-ribbon">
+            💗 FINAL PAAPA FILE 💗
+        </div>
+
+        <div class="case-stamp">
+            URGENT 💌
+        </div>
+
+        <h1 class="case-title">
+            <span class="title-icon">📁</span>
+            THE FINAL PUNISHMENT REPORT
+        </h1>
+
+
+        <!-- PAAPA / PUPPY IMAGE FROM PAGE 2 -->
+
+        <div class="case-photo">
+            <img src="images/chibi0.png" alt="Paapa">
+            <div class="photo-label">
+                VICTIM • PAAPA
+            </div>
+        </div>
+
+
+        <div class="case-lines">
+
+            <div class="case-line">
+                <div class="case-label">
+                    CASE ON
+                </div>
+
+                <div class="case-value">
+                    <strong>Lingesh</strong>
+                </div>
+            </div>
+
+
+            <div class="case-line">
+                <div class="case-label">
+                    VICTIM
+                </div>
+
+                <div class="case-value">
+                    <strong>Paapa</strong> 🥺
+                </div>
+            </div>
+
+
+            <div class="case-line">
+                <div class="case-label">
+                    PUNISHMENT
+                </div>
+
+                <div class="case-value">
+
+                    Usually, the accused would receive
+                    <strong>2 MONTHS OF JAIL TIME</strong> —
+                    no phone, no college, no family...
+                    only Paapa. 😭
+
+                </div>
+            </div>
+
+
+            <div class="case-line">
+                <div class="case-label">
+                    HOWEVER
+                </div>
+
+                <div class="case-value">
+
+                    Punishment was considered
+                    <strong>too severe</strong>
+                    for this particular case.
+
+                </div>
+            </div>
+
+
+            <div class="case-line">
+                <div class="case-label">
+                    FINAL DECISION
+                </div>
+
+                <div class="case-value">
+
+                    The punishment can be reversed
+                    if the accused agrees to the
+                    following conditions.
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="status-box">
+
+            <span class="status strong">
+                FINAL CONDITIONS
+            </span>
+
+            <br><br>
+
+            <div class="case-value">
+
+                <strong>1.</strong>
+                Take a lot of pictures of her
+                and help her put stories. 📸
+
+                <br><br>
+
+                <strong>2.</strong>
+                Buy her more food,
+                take her shopping and take her movies.
+                🍔🛍️🎬
+
+                <br><br>
+
+                <strong>3.</strong>
+                Epavum avala konjanum. 🥺❤️
+
+            </div>
+
+        </div>
+
+
+        <button class="next-btn" onclick="openAgreement()">
+            I AGREE 🤝❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- AGREEMENT -->
+
+<section class="scene" id="agreementScene">
+
+    <div class="agreement">
+
+        <h2>
+            💌 TERMS OF PEACE 💌
+        </h2>
+
+        <p class="subtitle">
+            The final agreement between Paapa and Lingesh.
+        </p>
+
+        <div class="characters">
+
+            <div class="character">
+
+                <img src="images/chibi0.png" alt="Paapa">
+
+                <p>
+                    Paapa<br>
+                    Victim 🥺
+                </p>
+
+            </div>
+
+            <div class="heart-between">
+                ❤️
+            </div>
+
+            <div class="character">
+
+                <img src="images/lingeshchibi.png" alt="Lingesh">
+
+                <p>
+                    Lingesh<br>
+                    Accused 👀
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="terms">
+
+            <h3>
+                THE ACCUSED AGREES TO:
+            </h3>
+
+            <p>
+                📸 Take lots of pictures of Paapa
+                and help her put stories.
+            </p>
+
+            <p>
+                🍔 Buy Paapa food,
+                take her shopping and take her movies.
+            </p>
+
+            <p>
+                🥺 Epavum avala konjanum.
+            </p>
+
+        </div>
+
+
+        <button class="next-btn" onclick="signAgreement()">
+            SIGN THE AGREEMENT ✍️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SIGNED -->
+
+<section class="scene" id="signedScene">
+
+    <div class="signed-box">
+
+        <h1>
+            DOCUMENT SIGNED. ✍️
+        </h1>
+
+        <div class="accepted">
+            ACCEPTED ❤️
+        </div>
+
+        <p>
+            The accused has officially accepted
+            all terms and conditions.
+            <br><br>
+            Paapa's complaint has therefore
+            been temporarily withdrawn. 👀
+        </p>
+
+        <button class="next-btn" onclick="nextFromSigned()">
+            CONTINUE 💗
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- CASE CLOSED -->
+
+<section class="scene" id="dramaticEnding">
+
+    <div class="final-box">
+
+        <h1>
+            CASE CLOSED.
+        </h1>
+
+        <p>
+
+            After extensive investigation,
+            multiple complaints,
+            and one extremely dramatic victim...
+
+            <br><br>
+
+            <strong>
+                THE LINGESH CASE HAS FINALLY BEEN CLOSED.
+            </strong>
+
+            <br><br>
+
+            But remember...
+            <br>
+            Paapa is always watching. 👀
+
+            <br><br>
+
+            So behave yourself, Lingesh. 😭❤️
+
+        </p>
+
+        <button class="next-btn" onclick="location.href='page8.html'">
+            ONE LAST THING... 👀
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+const scenes = [
+    "punishmentIntro",
+    "punishmentCase",
+    "agreementScene",
+    "signedScene",
+    "dramaticEnding"
+];
+
+let currentScene = 0;
+
+function showScene(index){
+
+    document.querySelectorAll(".scene").forEach(scene=>{
+        scene.classList.remove("active");
+    });
+
+    document.getElementById(scenes[index]).classList.add("active");
+
+}
+
+function nextScene(){
+
+    if(currentScene < scenes.length - 1){
+
+        currentScene++;
+
+        showScene(currentScene);
+
+    }
+
+}
+
+function openAgreement(){
+
+    currentScene = 2;
+
+    showScene(currentScene);
+
+}
+
+function signAgreement(){
+
+    currentScene = 3;
+
+    showScene(currentScene);
+
+}
+
+function nextFromSigned(){
+
+    currentScene = 4;
+
+    showScene(currentScene);
+
+}
+
+</script>
+
+</body>
+</html>
+```

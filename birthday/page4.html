@@ -1,0 +1,1410 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Lingesh ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#4d3344;
+    background:
+        radial-gradient(circle at 50% 27%,rgba(255,220,190,.32) 0%,rgba(180,100,115,.16) 25%,transparent 49%),
+        radial-gradient(circle at 18% 75%,rgba(214,126,145,.13),transparent 30%),
+        linear-gradient(180deg,#321b2d 0%,#54283d 35%,#793d52 65%,#b86b76 100%);
+}
+
+.sun{
+    position:fixed;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:rgba(255,224,190,.22);
+    filter:blur(20px);
+    top:12%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:0;
+    pointer-events:none;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#fff7e8;
+    border-radius:50%;
+    box-shadow:0 0 8px #fff7e8,0 0 16px rgba(255,230,190,.7);
+    animation:twinkle 2.5s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.4)}
+}
+
+.petal{
+    position:fixed;
+    top:-30px;
+    font-size:20px;
+    opacity:.5;
+    pointer-events:none;
+    z-index:2;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-30px) rotate(0deg)}
+    100%{transform:translateY(110vh) rotate(360deg)}
+}
+
+#heartContainer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:25;
+    overflow:hidden;
+}
+
+.floatingHeart{
+    position:absolute;
+    bottom:-30px;
+    animation:heartFloat linear forwards;
+    opacity:0;
+}
+
+@keyframes heartFloat{
+    0%{
+        transform:translateY(0) scale(.7);
+        opacity:0
+    }
+
+    15%{opacity:.9}
+
+    100%{
+        transform:translateY(-110vh) translateX(var(--drift)) scale(1.15);
+        opacity:0
+    }
+}
+
+#confettiContainer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:30;
+    overflow:hidden;
+}
+
+.confetti{
+    position:absolute;
+    top:-20px;
+    animation:confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall{
+    0%{
+        transform:translateY(-20px) rotate(0);
+        opacity:1
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0
+    }
+}
+
+.page{
+    position:relative;
+    z-index:5;
+    width:100%;
+    min-height:100vh;
+    padding:60px 20px 80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+}
+
+.waitMessage{
+    margin-top:22vh;
+    color:#fff4ef;
+    font-size:22px;
+    letter-spacing:2px;
+    text-shadow:
+        0 0 12px rgba(255,230,210,.8),
+        0 3px 15px rgba(0,0,0,.25);
+    animation:pulse 1.5s infinite alternate;
+    transition:opacity 1s;
+}
+
+@keyframes pulse{
+    from{opacity:.45}
+    to{opacity:1}
+}
+
+.birthdayContent{
+    width:100%;
+    max-width:760px;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    animation:appear 1.5s ease forwards;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(30px)
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0)
+    }
+}
+
+.smallText{
+    color:#f9e6dc;
+    font-size:15px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    text-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+
+h1{
+    margin:0;
+    color:#fff7f1;
+    font-size:clamp(38px,7vw,68px);
+    line-height:1.05;
+    font-weight:normal;
+    text-shadow:0 5px 25px rgba(30,10,25,.4);
+}
+
+.heartTitle{
+    display:inline-block;
+    animation:heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.25)}
+}
+
+.photoFrame{
+    margin-top:28px;
+    width:125px;
+    height:125px;
+    padding:7px;
+    background:#fffaf5;
+    transform:rotate(-4deg);
+    box-shadow:0 15px 35px rgba(30,10,25,.3);
+    display:none;
+}
+
+.photoFrame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelopeArea{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.envelope{
+    position:relative;
+    width:min(430px,90vw);
+    height:275px;
+    cursor:pointer;
+    filter:drop-shadow(0 25px 28px rgba(25,8,20,.38));
+    transition:transform .4s ease;
+}
+
+.envelope:hover{
+    transform:translateY(-8px) rotate(-1deg);
+}
+
+.envelopeBack{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#fffaf6,#f3d6d6);
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.5);
+}
+
+.envelopeFlap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:215px solid transparent;
+    border-right:215px solid transparent;
+    border-top:140px solid #d99ba6;
+    transform-origin:top;
+    z-index:4;
+    transition:transform 1s ease;
+}
+
+.envelopeLeft{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:0;
+    border-top:137px solid transparent;
+    border-bottom:138px solid transparent;
+    border-left:215px solid #efd0ce;
+    z-index:3;
+}
+
+.envelopeRight{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:0;
+    height:0;
+    border-top:137px solid transparent;
+    border-bottom:138px solid transparent;
+    border-right:215px solid #e7c0c3;
+    z-index:3;
+}
+
+.envelopeBottom{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:215px solid transparent;
+    border-right:215px solid transparent;
+    border-bottom:145px solid #f6dcd8;
+    z-index:4;
+}
+
+.letter{
+    position:absolute;
+    left:7%;
+    width:86%;
+    height:220px;
+    bottom:10px;
+    background:linear-gradient(180deg,#fffefa,#fff4e9);
+    padding:25px;
+    border-radius:5px;
+    box-shadow:0 10px 24px rgba(40,15,30,.24);
+    z-index:2;
+    transition:transform 1.2s ease,bottom 1.2s ease;
+}
+
+.letter:before{
+    content:"♥";
+    position:absolute;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:28px;
+    height:28px;
+    background:#9d526b;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:13px;
+}
+
+.letter h2{
+    margin:5px 0 10px;
+    font-size:25px;
+    color:#814d61;
+}
+
+.letter p{
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+    font-size:15px;
+    color:#674755;
+}
+
+.envelope.open .envelopeFlap{
+    transform:rotateX(180deg);
+    z-index:1;
+}
+
+.envelope.open .letter{
+    bottom:150px;
+    transform:translateY(-10px);
+    z-index:5;
+}
+
+.openHint{
+    margin-top:18px;
+    color:#ffece5;
+    font-size:15px;
+    letter-spacing:1px;
+    animation:pulse 1.5s infinite alternate;
+}
+
+/* =========================
+   CUTE SHORTER MESSAGE CARD
+========================= */
+
+.messageCard{
+    width:min(820px,94vw);
+    margin-top:55px;
+    padding:27px;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,254,249,.99),
+            rgba(255,245,237,.99)
+        );
+
+    border-radius:22px 8px 22px 10px;
+
+    box-shadow:
+        0 25px 60px rgba(25,8,20,.40),
+        0 8px 18px rgba(90,40,60,.16);
+
+    border:1px solid rgba(255,255,255,.9);
+
+    display:none;
+
+    animation:letterAppear 1.2s ease forwards;
+
+    overflow:hidden;
+}
+
+.messageCard:before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(214,126,145,.11),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(180,100,115,.08),
+            transparent 24%
+        );
+
+    pointer-events:none;
+}
+
+.messageCard:after{
+    content:"♥";
+
+    position:absolute;
+    top:13px;
+    right:18px;
+
+    font-size:21px;
+    color:#c4778b;
+
+    transform:rotate(12deg);
+    opacity:.75;
+}
+
+.cardInside{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1.3fr .8fr;
+
+    gap:25px;
+
+    align-items:start;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.messageWriting{
+    padding:13px 8px 8px;
+    text-align:left;
+}
+
+.messageWriting h2{
+    margin:0 0 18px;
+
+    color:#81445b;
+
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+
+    font-size:clamp(24px,4vw,32px);
+
+    font-weight:normal;
+
+    transform:rotate(-1deg);
+}
+
+.messageWriting h2 span{
+    display:inline-block;
+    animation:heartbeat 1.4s infinite;
+}
+
+.messageWriting h2:after{
+    content:"";
+
+    display:block;
+
+    width:75px;
+    height:3px;
+
+    margin-top:7px;
+
+    background:#d99ba6;
+
+    border-radius:10px;
+
+    transform:rotate(-2deg);
+}
+
+.messageLine{
+    position:relative;
+
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+
+    font-size:clamp(14px,2.3vw,17px);
+
+    line-height:1.65;
+
+    color:#654554;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+    margin:10px 0;
+}
+
+.messageLine.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.messageLine.strong{
+    font-size:clamp(17px,2.8vw,21px);
+    color:#81445b;
+}
+
+/* =========================
+   RIGHT — THREE PHOTOS
+========================= */
+
+.photoSide{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding:6px 2px 10px;
+}
+
+.photoTitle{
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+
+    color:#81445b;
+
+    font-size:17px;
+
+    margin-bottom:15px;
+
+    transform:rotate(2deg);
+}
+
+.photoStack{
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:22px;
+}
+
+.scrapPhoto{
+    position:relative;
+
+    width:min(245px,100%);
+
+    aspect-ratio:4 / 3;
+
+    padding:9px;
+
+    background:#fff;
+
+    box-shadow:
+        0 8px 18px rgba(60,30,45,.23),
+        0 2px 5px rgba(60,30,45,.10);
+
+    overflow:visible;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.scrapPhoto img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4ef,
+            #f9e1df
+        );
+}
+
+.scrapPhoto:nth-child(1){
+    transform:rotate(-4deg);
+}
+
+.scrapPhoto:nth-child(2){
+    transform:rotate(3deg);
+}
+
+.scrapPhoto:nth-child(3){
+    transform:rotate(-2deg);
+}
+
+.scrapPhoto:hover{
+    transform:
+        rotate(0deg)
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 25px rgba(60,30,45,.28);
+}
+
+.scrapPhoto:before{
+    content:"";
+
+    position:absolute;
+
+    width:65px;
+    height:18px;
+
+    top:-9px;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+
+    background:rgba(224,177,171,.72);
+
+    box-shadow:
+        0 2px 4px rgba(70,30,40,.12);
+
+    z-index:3;
+}
+
+.scrapPhoto:after{
+    content:"✿";
+
+    position:absolute;
+
+    right:-11px;
+    bottom:-11px;
+
+    font-size:19px;
+
+    color:#c4778b;
+
+    transform:rotate(12deg);
+}
+
+.photoNote{
+    margin-top:12px;
+
+    color:#a15c70;
+
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+
+    font-size:12px;
+
+    transform:rotate(-2deg);
+}
+
+@keyframes letterAppear{
+    from{
+        opacity:0;
+        transform:
+            translateY(35px)
+            rotate(2deg);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+}
+
+/* =========================
+   NEXT SECTION
+========================= */
+
+.nextSection{
+    margin-top:45px;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    padding-bottom:30px;
+    animation:appear 1s ease;
+}
+
+.nextText{
+    color:#fff1eb;
+    font-size:21px;
+    font-family:"Segoe Print",cursive;
+    text-shadow:0 2px 12px rgba(0,0,0,.25);
+    margin-bottom:20px;
+}
+
+.nextButton{
+    border:1px solid rgba(255,255,255,.5);
+    padding:15px 30px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#fff7f0,#f4cdd1);
+    color:#77495c;
+    font-size:16px;
+    font-family:Georgia,serif;
+    cursor:pointer;
+    box-shadow:0 12px 28px rgba(30,10,25,.3);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+.nextButton:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 18px 35px rgba(30,10,25,.4);
+}
+
+.musicButton{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:50;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,250,247,.92);
+
+    box-shadow:0 8px 20px rgba(25,8,20,.3);
+
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .page{
+        padding-top:40px;
+    }
+
+    .envelope{
+        height:220px;
+    }
+
+    .envelopeFlap{
+        border-left-width:45vw;
+        border-right-width:45vw;
+        border-top-width:110px;
+    }
+
+    .envelopeLeft{
+        border-top-width:110px;
+        border-bottom-width:110px;
+        border-left-width:45vw;
+    }
+
+    .envelopeRight{
+        border-top-width:110px;
+        border-bottom-width:110px;
+        border-right-width:45vw;
+    }
+
+    .envelopeBottom{
+        border-left-width:45vw;
+        border-right-width:45vw;
+        border-bottom-width:115px;
+    }
+
+    .letter{
+        height:175px;
+        padding:18px;
+    }
+
+    .letter h2{
+        font-size:19px;
+    }
+
+    .letter p{
+        font-size:12px;
+    }
+
+    .envelope.open .letter{
+        bottom:120px;
+    }
+
+    .messageCard{
+        width:94vw;
+        padding:22px 16px;
+    }
+
+    .cardInside{
+        grid-template-columns:1fr;
+        gap:22px;
+    }
+
+    .messageWriting{
+        padding:6px 4px;
+    }
+
+    .messageWriting h2{
+        text-align:center;
+    }
+
+    .messageWriting h2:after{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .messageLine{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .photoSide{
+        padding-top:2px;
+    }
+
+    .photoStack{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:18px;
+    }
+
+    .scrapPhoto{
+        width:155px;
+    }
+
+    .photoTitle{
+        margin-bottom:8px;
+    }
+
+    .photoNote{
+        margin-top:8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sun"></div>
+
+<div class="stars">
+    <span class="star" style="left:10%;top:15%;"></span>
+    <span class="star" style="left:25%;top:8%;"></span>
+    <span class="star" style="left:40%;top:20%;"></span>
+    <span class="star" style="left:62%;top:12%;"></span>
+    <span class="star" style="left:80%;top:18%;"></span>
+    <span class="star" style="left:90%;top:35%;"></span>
+    <span class="star" style="left:15%;top:42%;"></span>
+    <span class="star" style="left:72%;top:45%;"></span>
+    <span class="star" style="left:50%;top:55%;"></span>
+</div>
+
+<div class="petal" style="left:8%;animation-duration:8s;">🌸</div>
+<div class="petal" style="left:25%;animation-duration:11s;animation-delay:2s;">🌷</div>
+<div class="petal" style="left:47%;animation-duration:9s;animation-delay:1s;">🌸</div>
+<div class="petal" style="left:70%;animation-duration:12s;animation-delay:3s;">🌷</div>
+<div class="petal" style="left:88%;animation-duration:10s;animation-delay:1s;">🌸</div>
+
+<div id="heartContainer"></div>
+<div id="confettiContainer"></div>
+
+<main class="page">
+
+    <div class="waitMessage" id="waitMessage">
+        ✨ wait for it... ✨
+    </div>
+
+    <section class="birthdayContent" id="birthdayContent">
+
+        <div class="smallText">
+            A little message for you
+        </div>
+
+        <h1>
+            Happy Birthday
+            <span class="heartTitle">❤️</span>
+            <br>
+            My dear Lingesh
+        </h1>
+
+        <div class="photoFrame">
+            <img src="images/lingesh.jpg">
+        </div>
+
+        <div class="envelopeArea">
+
+            <div class="envelope" id="envelope" onclick="openLetter()">
+
+                <div class="envelopeBack"></div>
+
+                <div class="letter">
+
+                    <h2>
+                        To my favourite person ❤️
+                    </h2>
+
+                    <p>
+                        I wrote this one just for you... open it with love.
+                    </p>
+
+                </div>
+
+                <div class="envelopeLeft"></div>
+                <div class="envelopeRight"></div>
+                <div class="envelopeBottom"></div>
+                <div class="envelopeFlap"></div>
+
+            </div>
+
+            <div class="openHint" id="openHint">
+                💌 Click the letter...
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MESSAGE CARD
+        ========================== -->
+
+        <div class="messageCard" id="messageCard">
+
+            <div class="cardInside">
+
+                <!-- LEFT SIDE -->
+                <div class="messageWriting">
+
+                    <h2>
+                        Happy Birthday <span>❤️</span>
+                    </h2>
+
+                    <p class="messageLine">
+                        Happy birthday, Lingesh ❤️
+                    </p>
+
+                    <p class="messageLine">
+                        Iniki unnoda birthday and  i feel like im the luckiest person that you are born and to have you in my life. You have always been a special part of my life , and I honestly cannot explain how much you mean to me. 🥹❤️
+                    </p>
+
+                    <p class="messageLine">
+                        i love you sooo much chellam.
+                    </p>
+
+                    <p class="messageLine">
+                        i just hope that you are always happy, healthy and eppavum sirichite unnoda bright smile ah ellarukum kaatitu avanga life la oru sunshine ah irupanu. Always please be happy either with or without me </p>
+
+                    <p class="messageLine">
+                         i know i don't express often but i genuinely like you
+			 and genuinely care about you , you mean so much to me , you make my ordinary days special by just being there , you are my everything daa❤️
+                    </p>
+
+                    <p class="messageLine">
+                           if i can i want to spend all 7 jenmam with you 
+			namba serurom illa lifelong vaazhurom illa                  
+                     </p>
+
+                    <p class="messageLine">
+                        analum enaku aduthu 7 jenmam nu onnu iruntha ella jenmamlayum 
+                        nee kandipa anga irukanum i just want this life with you again 
+                        and again even if it destroys me.unkooda pesi unna love panrathulalam i have 0 regrets , ithu again nadanthalum i will do it again ❤️
+                    </p>
+
+                    <p class="messageLine">
+
+                    just know and always remember that you are loved by everyone and especially by a lot by me .i hope that whenever you  remember, it  makes you smile . whenever life gets hard just think how much people love you and much you actually mean to them you have always been a good family member, a caring member , a good friend and a good bf , sometimes naane neraiya vaati yosichiruken unna maari oruthan avana en life la vandhu enna ivlo nalla paathukura alavuku naanu enna punniyam pannen nu lam, ellarume avanga bf ipdi avanga bf purinjka maatanga avanga bf toxic nu lam solluvanga but enaku apdilam illa oru sokka thangam kedachirukan naanu than avana olunga paathukama toxic ah irupen eh thavira nee romba romba nallavan lingesh please ennaikume nee unna blame pannikatha nee nrml ah than iruka naanu than abnormal ah iruken seriya ,also you are my hero, you raised me , you singlehandedly healed me with your love 
+                        im very very grateful for your love( en vaazhkaila enaku nadantha oru nalla vishiyam 
+                         ithu onnu mattum than)
+</p>
+                    <p class="messageLine">
+			 I just want you to be confident , to know that you are beautiful inside and outside 
+			         </p>
+
+                    <p class="messageLine">
+                                nee ulla mattum illa lingesh veliyavum beautiful than nee romba romba azhagu lingesh nijama..athuvum un siripu iruku theiryuma athellam sollave venam naanu un siripa paakurathukaagave 1000 kolai pannuven avlo azhaga irukum un siripu and unna smooth aaana flawless skin nee karupave irunthalum un skin glowing ah irukum da chellam veyil la lam apdiye thangam maari irupa           </p>
+
+                    <p class="messageLine">
+                           and athuvum illama un moonjila unaku freckles irukum azhaga athellam paatha enake poramaiya irukum and unnoda eyebrows irukum theiryuma evlo azhagu theriyuma un dusky face ku dark eyebrows semma azhaga irukum and eyelashes lam sollave venam apdiye un kana super ah shield panni semma azhaga theriyum athuvum un kannalam side la irunthu paatha paathute iruka thonum                 </p>
+
+                    <p class="messageLine">
+                        enaku ore vaati nee ennoda kannu vazhiya unnaye nee paathukanum apo tha nee unmailaye evlo azhagunu theriyum and im so proud that you are my bf naanu en ella frds kittayum un pic ah kaati kati nee evlo azhagunu describe pannuven unn avechi scene poduven avangaluku pic kata eduthu un ella pics ah yum paathu jollu viduven lol
+                    </p>
+
+
+                    <p class="messageLine">
+                        Thank you for being you. Thank you for all the little things you do, for the memories you have given me, 
+                        for the laughter, the comfort, the love, and simply for existing in my life.
+                    </p>
+
+
+                    <p class="messageLine strong">
+                        And finally, once again... Happy Birthday, my dear hero. 🎂❤️ i hope i can see you success ad the happiest version of yourself
+                    </p>
+
+                    <p class="messageLine strong">
+                        I love you so, so much. 
+                        I hope this year brings you everything your heart has been waiting for. 
+                        Keep smiling, keep growing, keep being the beautiful person you are — and never forget that your Boomi will always be cheering for you and loving you. 🐣❤️
+                    </p>
+
+
+
+                </div>
+
+
+                <!-- RIGHT SIDE — 3 DIFFERENT IMAGES -->
+                <div class="photoSide">
+
+                    <div class="photoTitle">
+                        little memories ♡
+                    </div>
+
+                    <div class="photoStack">
+
+                        <!-- IMAGE 1 -->
+                        <div class="scrapPhoto">
+                            <img src="images/pic1.jpg" alt="Memory 1">
+                        </div>
+
+                        <!-- IMAGE 2 -->
+                        <div class="scrapPhoto">
+                            <img src="images/pic2.jpg" alt="Memory 2">
+                        </div>
+
+                        <!-- IMAGE 3 -->
+                        <div class="scrapPhoto">
+                            <img src="images/pic3.jpg" alt="Memory 3">
+                        </div>
+
+                    </div>
+
+                    <div class="photoNote">
+                        three little moments ♡
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO CAKE SECTION -->
+
+
+        <div class="nextSection" id="nextSection">
+
+            <div class="nextText">
+                Idhoda surprise mudila puppy... innum neraiya iruku 👀❤️
+            </div>
+
+            <button class="nextButton" onclick="goNext()">
+                Continue the surprise → 💌
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<audio id="birthdayMusic" loop>
+    <source src="audio/birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="musicButton" id="musicButton" onclick="toggleMusic()">
+    🔊
+</button>
+
+
+<script>
+
+function createConfetti(){
+
+    const container =
+        document.getElementById("confettiContainer");
+
+    const symbols = [
+        "❤️",
+        "💗",
+        "✨",
+        "🎀",
+        "🌸",
+        "💖"
+    ];
+
+    for(let i=0;i<80;i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className="confetti";
+
+        piece.innerText =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        piece.style.left =
+            Math.random()*100+"%";
+
+        piece.style.fontSize =
+            (10+Math.random()*12)+"px";
+
+        piece.style.animationDelay =
+            Math.random()*2+"s";
+
+        piece.style.animationDuration =
+            (3+Math.random()*3)+"s";
+
+        container.appendChild(piece);
+    }
+
+    setTimeout(()=>{
+        container.innerHTML="";
+    },7000);
+}
+
+
+function createHearts(){
+
+    const container =
+        document.getElementById("heartContainer");
+
+    const symbols = [
+        "♡",
+        "♥",
+        "❤",
+        "💗",
+        "💖",
+        "💕"
+    ];
+
+    for(let i=0;i<18;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className="floatingHeart";
+
+        heart.innerText =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        heart.style.left =
+            Math.random()*100+"%";
+
+        heart.style.fontSize =
+            (12+Math.random()*20)+"px";
+
+        heart.style.animationDuration =
+            (6+Math.random()*5)+"s";
+
+        heart.style.animationDelay =
+            Math.random()*4+"s";
+
+        heart.style.setProperty(
+            "--drift",
+            (Math.random()*120-60)+"px"
+        );
+
+        container.appendChild(heart);
+    }
+}
+
+
+window.onload=function(){
+
+    createConfetti();
+
+    createHearts();
+
+    setTimeout(()=>{
+
+        document.getElementById(
+            "waitMessage"
+        ).style.opacity="0";
+
+        setTimeout(()=>{
+
+            document.getElementById(
+                "waitMessage"
+            ).style.display="none";
+
+            document.getElementById(
+                "birthdayContent"
+            ).style.display="flex";
+
+            startMusic();
+
+        },1000);
+
+    },2500);
+};
+
+
+function openLetter(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const hint =
+        document.getElementById("openHint");
+
+    if(envelope.classList.contains("open"))
+        return;
+
+    envelope.classList.add("open");
+
+    hint.innerText =
+        "💗 Opened just for you...";
+
+    setTimeout(()=>{
+
+        document.getElementById(
+            "messageCard"
+        ).style.display="block";
+
+        showMessages();
+
+    },1300);
+}
+
+
+function showMessages(){
+
+    const lines =
+        document.querySelectorAll(".messageLine");
+
+    lines.forEach((line,index)=>{
+
+        setTimeout(()=>{
+
+            line.classList.add("show");
+
+        },index*800);
+
+    });
+
+    setTimeout(()=>{
+
+        document.getElementById(
+            "nextSection"
+        ).style.display="flex";
+
+        createHearts();
+
+    },lines.length*800+900);
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music =
+    document.getElementById("birthdayMusic");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+music.volume=0.35;
+
+
+music.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        const savedTime =
+            parseFloat(
+                sessionStorage.getItem(
+                    "birthdayMusicTime"
+                )
+            );
+
+        if(
+            !Number.isNaN(savedTime) &&
+            savedTime>=0 &&
+            savedTime<music.duration
+        ){
+
+            music.currentTime=savedTime;
+
+        }
+
+    }
+);
+
+
+music.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(!music.paused){
+
+            sessionStorage.setItem(
+                "birthdayMusicTime",
+                music.currentTime
+            );
+
+        }
+
+    }
+);
+
+
+window.addEventListener(
+    "pagehide",
+    function(){
+
+        sessionStorage.setItem(
+            "birthdayMusicTime",
+            music.currentTime
+        );
+
+    }
+);
+
+
+function startMusic(){
+
+    music.play()
+        .then(()=>{
+
+            musicButton.innerText="🔊";
+
+        })
+        .catch(()=>{
+
+            musicButton.innerText="🎵";
+
+        });
+
+}
+
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play()
+            .then(()=>{
+
+                musicButton.innerText="🔊";
+
+            })
+            .catch(()=>{});
+
+    }else{
+
+        sessionStorage.setItem(
+            "birthdayMusicTime",
+            music.currentTime
+        );
+
+        music.pause();
+
+        musicButton.innerText="🔇";
+
+    }
+
+
+}
+
+
+function goNext(){
+
+    sessionStorage.setItem(
+        "birthdayMusicTime",
+        music.currentTime
+    );
+
+    window.location.href="page5.html";
+
+}
+
+</script>
+
+</body>
+</html>
+```

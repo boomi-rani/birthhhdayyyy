@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>One Last Thing ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    font-family:Georgia,serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(255,255,255,.75),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(255,213,228,.55),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 15% 90%,
+            rgba(225,211,247,.45),
+            transparent 22%
+        ),
+        linear-gradient(
+            135deg,
+            #f9e2ef 0%,
+            #eadcf9 48%,
+            #dfe9ff 100%
+        );
+
+    color:#59495e;
+}
+
+
+/* BACKGROUND DECORATIONS */
+
+.cloud{
+    position:fixed;
+    width:180px;
+    height:75px;
+
+    background:rgba(255,255,255,.4);
+
+    border-radius:100px;
+
+    filter:blur(2px);
+
+    pointer-events:none;
+}
+
+.cloud1{
+    top:8%;
+    left:-40px;
+}
+
+.cloud2{
+    bottom:12%;
+    right:-45px;
+    width:220px;
+}
+
+
+.sparkle{
+    position:fixed;
+    color:white;
+    opacity:.7;
+
+    animation:twinkle 2.5s infinite ease-in-out;
+
+    pointer-events:none;
+}
+
+.s1{
+    top:15%;
+    left:12%;
+}
+
+.s2{
+    top:27%;
+    right:15%;
+    animation-delay:.7s;
+}
+
+.s3{
+    bottom:20%;
+    left:18%;
+    animation-delay:1.2s;
+}
+
+.s4{
+    bottom:30%;
+    right:8%;
+    animation-delay:1.8s;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.25;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+}
+
+
+.heart{
+    position:fixed;
+
+    opacity:.25;
+
+    font-size:22px;
+
+    animation:floatHeart 6s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+.h1{
+    left:8%;
+    bottom:8%;
+}
+
+.h2{
+    right:10%;
+    top:12%;
+    animation-delay:2s;
+}
+
+.h3{
+    left:22%;
+    top:7%;
+    animation-delay:4s;
+}
+
+@keyframes floatHeart{
+
+    0%,100%{
+        transform:translateY(0) rotate(-8deg);
+    }
+
+    50%{
+        transform:translateY(-22px) rotate(8deg);
+    }
+
+}
+
+
+/* LETTER */
+
+.letter{
+
+    position:relative;
+
+    width:min(820px,94vw);
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fffdf8;
+
+    border:2px solid #efc9d5;
+
+    border-radius:25px;
+
+    padding:65px 65px 60px;
+
+    box-shadow:
+        0 30px 75px rgba(84,61,80,.20),
+        0 0 0 7px rgba(255,255,255,.55);
+
+    animation:letterAppear .9s ease both;
+}
+
+
+/* INNER DASHED BORDER */
+
+.letter:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:13px;
+
+    border:2px dashed #ead4dc;
+
+    border-radius:18px;
+
+    pointer-events:none;
+}
+
+
+/* DECORATIVE CORNERS */
+
+.letter:after{
+
+    content:"♡";
+
+    position:absolute;
+
+    top:25px;
+    left:30px;
+
+    color:#d995ac;
+
+    font-size:25px;
+
+    transform:rotate(-12deg);
+
+    pointer-events:none;
+}
+
+
+.corner-star{
+
+    position:absolute;
+
+    right:30px;
+    bottom:24px;
+
+    color:#c5a7c9;
+
+    font-size:22px;
+
+    transform:rotate(15deg);
+}
+
+
+/* CONTENT */
+
+.content{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    max-width:680px;
+
+    margin:auto;
+}
+
+
+.small-title{
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    color:#d486a0;
+
+    margin-bottom:15px;
+
+    text-transform:uppercase;
+}
+
+
+h1{
+
+    margin:0 0 38px;
+
+    color:#786087;
+
+    font-size:clamp(30px,5vw,44px);
+
+    line-height:1.2;
+
+    font-weight:normal;
+}
+
+
+p{
+
+    margin:0 0 28px;
+
+    color:#665665;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+
+.highlight{
+
+    color:#765c80;
+
+    font-weight:bold;
+}
+
+
+.final-message{
+
+    margin-top:38px;
+
+    padding-top:30px;
+
+    border-top:2px dashed #e7ccd8;
+}
+
+
+.birthday{
+
+    color:#bd6d87;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    margin-top:35px;
+
+    margin-bottom:0;
+}
+
+
+.heart-big{
+
+    display:block;
+
+    margin-top:22px;
+
+    font-size:30px;
+
+    animation:heartbeat 1.8s infinite ease-in-out;
+}
+
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+
+@keyframes letterAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+
+/* SCROLLBAR */
+
+.letter::-webkit-scrollbar{
+    width:6px;
+}
+
+.letter::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#e5cbd5;
+    border-radius:10px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    body{
+        padding:12px;
+    }
+
+    .letter{
+
+        width:94vw;
+
+        max-height:92vh;
+
+        padding:50px 28px 45px;
+
+        border-radius:22px;
+    }
+
+    .letter:before{
+        inset:10px;
+    }
+
+    h1{
+        font-size:29px;
+        margin-bottom:30px;
+    }
+
+    p{
+        font-size:16px;
+        line-height:1.8;
+        margin-bottom:24px;
+    }
+
+    .birthday{
+        font-size:22px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">✦</div>
+<div class="sparkle s4">✧</div>
+
+<div class="heart h1">♡</div>
+<div class="heart h2">♡</div>
+<div class="heart h3">♡</div>
+
+
+<!-- FINAL LETTER -->
+
+<div class="letter">
+
+    <div class="corner-star">
+        ✦
+    </div>
+
+
+    <div class="content">
+
+        <div class="small-title">
+            One Last Thing
+        </div>
+
+
+        <p>
+            ithellam than nanu unkitta sollanum nu nenachen and naanu sollirukaruthu ellame 100% naanu theliva 10 naala yosichi sonnathu ellame unmai❤️
+        </p>
+
+
+        <p>
+
+            ithu oru full book aagurathukumunnadi naanu stop panniduren 😭
+
+        </p>
+
+
+        <p>
+
+            I hope when you read this, you remember that there is
+            someone who genuinely
+
+            <span class="highlight">
+                loves you,
+            </span>
+
+            believes in you,
+
+            <span class="highlight">
+                is proud of you,
+            </span>
+
+            and wants to see you happy.
+
+        </p>
+
+
+        <div class="final-message">
+
+            <p>
+
+                No matter how much times i fight with you , i scold you how harsh words i use on you ,
+
+            </p>
+
+
+            <p>
+
+                I hope you always know that athellam summa kovathula solrathu and naanu indha letter la eluthunathu than how i truly feel about you .
+                <span class="highlight">
+                </span>
+
+            </p>
+
+
+            <p class="birthday">
+
+                Happy Birthday, my love. ❤️
+
+            </p>
+
+
+            <span class="heart-big">
+                ♡
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
+```
